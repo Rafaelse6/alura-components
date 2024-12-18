@@ -241,6 +241,10 @@ function App() {
 
   const [colaboradores, setColaboradores] = useState(inicial);
 
+  function cadastrarTime({ nome, cor }) {
+    setTimes([...times, { nome, cor, id: uuidv4() }]);
+  }
+
   function deletarColaborador(id) {
     setColaboradores(
       colaboradores.filter((colaborador) => colaborador.id !== id)
@@ -262,6 +266,7 @@ function App() {
     <div>
       <Banner />
       <Formulario
+        aoCriarTime={cadastrarTime}
         times={times.map((time) => time.nome)}
         aoCadastrar={(colaborador) =>
           setColaboradores([...colaboradores, colaborador])
